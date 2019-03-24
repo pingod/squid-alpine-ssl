@@ -1,5 +1,6 @@
 # Squid on Alpine with SSLBump ![Logo](squid_logo.png)[![Build Status](https://travis-ci.org/alatas/squid-alpine-ssl.svg?branch=master)](https://travis-ci.org/alatas/squid-alpine-ssl)
 
+
 This is one of the side projects that I configure and publish to a Docker image. Fundamentally, I configure Squid on Alpine Linux and add SSLBump feature to Squid in this image.
 
 The total size of this image is 8MB. You can get up and running this full feature web proxy in a minute or so.
