@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.9
 
 LABEL maintainer="alatas@gmail.com"
 
@@ -14,11 +14,12 @@ ARG all_proxy
 ENV http_proxy=$all_proxy \
     https_proxy=$all_proxy
 
-RUN apk add --no-cache \
-    squid=3.5.27-r0 \
-    openssl=1.0.2p-r0 \
-    ca-certificates && \
-    update-ca-certificates
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
+    && apk add --no-cache \
+    squid \
+    openssl \
+    ca-certificates \
+    && update-ca-certificates
 
 COPY start.sh /usr/local/bin/
 COPY openssl.cnf.add /etc/ssl
