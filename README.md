@@ -1,3 +1,5 @@
+**registry.cn-hangzhou.aliyuncs.com/sourcegarden/squid:alpine-v0.1**
+
 # Squid on Alpine with SSLBump ![Logo](squid_logo.png)[![Build Status](https://travis-ci.org/alatas/squid-alpine-ssl.svg?branch=master)](https://travis-ci.org/alatas/squid-alpine-ssl)
 
 
