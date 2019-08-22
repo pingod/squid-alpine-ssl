@@ -18,6 +18,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
     && apk add --no-cache \
     squid \
     openssl \
+    apache2-utils \
+    bash \
     ca-certificates \
     && update-ca-certificates
 

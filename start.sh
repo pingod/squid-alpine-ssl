@@ -2,6 +2,30 @@
 
 set -e
 
+if [ -z "$CN" ]; then
+	CN="squid.local"
+fi
+
+if [ -z "$O" ]; then
+	O="squid"
+fi
+
+if [ -z "$OU" ]; then
+	OU="squid"
+fi
+
+if [ -z "$C" ]; then
+	C="US"
+fi
+
+if [ -z "$SQUID_USERNAME" ]; then
+	SQUID_USERNAME="heaven"
+fi
+
+if [ -z "$SQUID_PASSWORD" ]; then
+	SQUID_PASSWORD="echoinheaven"
+fi
+
 CHOWN=$(/usr/bin/which chown)
 SQUID=$(/usr/bin/which squid)
 
@@ -47,13 +71,14 @@ clear_certs_db() {
 	"$CHOWN" -R squid.squid /var/cache/squid/ssl_db
 }
 
-run() {
+init_squid() {
 	echo "Starting squid..."
 	prepare_folders
 	create_cert
 	clear_certs_db
 	initialize_cache
+	htpasswd -bc /etc/squid/password  $SQUID_USERNAME $SQUID_PASSWORD
 	exec "$SQUID" -NYCd 1 -f /etc/squid/squid.conf
 }
 
-run
+init_squid
